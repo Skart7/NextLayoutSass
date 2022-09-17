@@ -1,0 +1,33 @@
+@import '../vars'
+
+.header
+    background-color: $color-secondary
+    padding: 0.725rem 0.3rem
+    box-shadow: 0 1px 1px 2px $color-secondary
+
+.wrapper
+    display: flex
+    justify-content: space-between
+    align-items: center
+    grid-gap: 2vh
+
+.leftContent
+    display: flex
+    justify-content: flex-start
+    align-items: center
+
+.headerIcon
+    fill: $color-primary-text
+.headerTextLogo
+    color: $color-secondary-text
+
+    @media (max-width: 600px)
+        display: none
+
+.centerContent
+    width: 100%
+
+.rightContent
+    display: flex
+    justify-content: flex-end
+    align-items: center

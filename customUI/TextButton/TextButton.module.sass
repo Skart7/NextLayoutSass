@@ -1,0 +1,31 @@
+@import '../../styles/vars'
+
+.button
+    outline: none
+    text-transform: uppercase
+    border: none
+    background: none
+    border-radius: $border-radius
+    cursor: pointer
+    transition: background 0.1s linear
+    font-weight: 700
+    letter-spacing: 0.05rem
+    font-family: $font-text
+
+    &:disabled
+        cursor: default
+        color: $color-disabled !important
+
+    &.fullWidth
+        width: 100%
+    &.small
+        padding: 0.5rem 0.625rem
+        font-size: 0.781rem
+    &.medium
+        padding: 0.75rem 0.875rem
+        font-size: 0.8rem
+    @each $color, $bg, $text in $colors
+        &.#{$color}
+            color: $bg
+            &:hover, &:focus
+                background-color: rgba($bg, 0.15)

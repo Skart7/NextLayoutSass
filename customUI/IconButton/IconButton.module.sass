@@ -1,0 +1,30 @@
+@import '../../styles/vars'
+
+$colorIcon: primary $color-primary, secondary $color-secondary, error $color-error, success $color-success, warning $color-warning, text $color-text, white #fff, black #000
+
+.button
+    outline: none
+    border: none
+    background: none
+    display: flex
+    justify-content: center
+    align-items: center
+    cursor: pointer
+    border-radius: 50%
+    padding: 0.425rem
+    transition: background .1s linear
+
+    &:disabled
+        cursor: default
+        & > *
+            color: $color-disabled
+            fill: $color-disabled
+
+    @each $color, $bg, $text in $colorIcon
+        &.#{$color}
+            & > *
+                color: $bg
+                fill: $bg
+            &:hover, &:focus
+                background-color: rgba($bg, 0.1)
+                box-shadow: 0px 1px 1px 0px rgba($bg, 0.1)

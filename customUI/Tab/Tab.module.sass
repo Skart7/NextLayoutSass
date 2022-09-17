@@ -1,0 +1,20 @@
+@import '../../styles/vars'
+
+.tab
+    padding: 0.625rem
+    background: none
+    border: none
+    border-radius: $border-radius
+    font-weight: 600
+    font-size: 0.725rem
+    font-family: $font-text
+    text-transform: uppercase
+    transition: background .2s linear
+    color: $color-text
+    cursor: pointer
+
+    @each $color, $bg, $text in $colors
+        &.#{$color}
+            &.active
+                background-color: $bg
+                color: $text

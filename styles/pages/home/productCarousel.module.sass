@@ -1,0 +1,32 @@
+@import '../../vars'
+
+.wrapper
+    padding: 0.6rem
+    margin-top: 1rem
+
+.carouselHeader
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 0.5rem
+
+.button
+    background-color: $color-primary
+    color: $color-primary-text
+    padding: 0.6rem
+    border-radius: $border-radius
+    margin: 0 .35rem
+    font-weight: 700
+    border: none
+    &:hover
+        background-color: $color-primary-hover
+    &:focus
+        background-color: $color-primary-focus
+    &:disabled
+        cursor: default
+        background-color: $color-disabled
+
+.slider
+    height: 320px
+.slide
+    height: 320px

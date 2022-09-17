@@ -1,0 +1,42 @@
+@import '../vars'
+
+.cart
+    max-width: 325px
+    width: 100%
+
+.cartHeader
+    display: flex
+    padding: 0.825rem
+    justify-content: space-between
+    align-items: center
+    background-color: $color-secondary
+
+    & > *
+        color: $color-text-white
+
+.cartList
+    overflow: hidden
+    overflow-y: auto
+    padding: 0.9rem
+    margin-bottom: 0.9rem
+    max-height: 80%
+    height: 100%
+
+.cartFooter
+    display: flex
+    justify-content: space-between
+    align-items: flex-end
+    padding: 0.9rem
+    max-height: 10%
+    height: 100%
+.cartEmpty
+    margin: 15px 0
+    display: flex
+    justify-content: center
+    align-items: center
+    min-height: 85%
+    max-height: 85%
+    padding: 10px
+
+.cartTotalText
+    color: $color-primary

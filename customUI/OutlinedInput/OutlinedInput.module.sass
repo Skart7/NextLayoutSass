@@ -1,0 +1,78 @@
+@import '../../styles/vars'
+
+.wrapper
+    position: relative
+    width: 16.5rem
+    margin-top: 2rem
+
+    &.fullWidth
+        width: 100%
+
+.label
+    color: $color-text
+    position: absolute
+    top: 0
+    left: 0
+    font-weight: 400
+    font-family: $font-text
+    transition: all 0.2s ease-in-out
+    pointer-events: none
+    height: 100%
+    display: flex
+    align-items: center
+    &.small
+        font-size: 0.825rem
+    &.medium
+        font-size: 0.925rem
+
+.endIcon
+    position: absolute
+    height: 100%
+    display: flex
+    align-items: center
+    top: 0
+    right: 0
+    padding: .4rem
+    color: $color-error
+
+.input
+    border: 1px solid rgba($color-disabled, .25)
+    color: $color-disabled
+    border-radius: $border-radius
+    background: $bg-paper
+    font-weight: 400
+    letter-spacing: 0.06rem
+    font-family: $font-text
+    width: 100%
+
+    &:disabled, &:read-only
+        border-color: $color-disabled !important
+    &:required + .label::after
+        content: '*'
+        color: $color-error
+
+    &.inputEndIcon
+        padding-right: 2.5rem !important
+
+    &.small
+        font-size: 0.825rem
+        padding: 0.5rem
+        & + .label
+            padding: 0 0.5rem
+    &.medium
+        font-size: 0.925rem
+        padding: 0.7rem
+        & + .label
+            padding: 0 0.7rem
+    &.error
+        outline: none !important
+        border-color: rgba($color-error, .5)
+
+    @each $color, $bg, $text in $inputColors
+        &.#{$color}
+            &:focus
+                outline: 1px solid rgba($bg, .45)
+            &:focus + .label,
+            &:placeholder-shown + .label,
+            &:not([value='']) + .label
+                transform: translateY(-85%)

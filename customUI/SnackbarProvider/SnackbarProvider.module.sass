@@ -1,0 +1,14 @@
+@import '../../styles/vars'
+
+$anchors: top 5rem, bottom 5rem, left 1.5rem, right 1.5rem
+
+.snackbarList
+    position: fixed
+    max-width: 16.5rem
+    display: flex
+    flex-direction: column
+    gap: 1vh
+
+    @each $anchor, $value in $anchors
+        &.#{$anchor}
+            #{$anchor}: $value
