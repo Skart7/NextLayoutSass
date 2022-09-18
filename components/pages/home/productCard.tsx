@@ -13,17 +13,18 @@ import { Products } from '../../../localdb'
 export default function ProductCard(data: Products) {
 
     const dispatch = useAppDispatch()
-    const {newSnackbar} = useSnackbar()
+    const { newSnackbar } = useSnackbar()
 
     const [isHovering, setIsHovered] = React.useState(false)
     const onMouseEnter = () => setIsHovered(true)
     const onMouseLeave = () => setIsHovered(false)
-    
+
     const onAddToCart = () => {
         dispatch(addToCart(data as any))
         newSnackbar({
-            message: data.label.substring(0, 20) + '... has been added',
-            severity: 'success'
+            message: 'has been added',
+            severity: 'success',
+            title: data.label.substring(0, 20) + '...'
         })
     }
 

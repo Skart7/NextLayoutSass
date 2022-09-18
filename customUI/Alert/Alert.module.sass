@@ -2,52 +2,58 @@
 
 $alertColor: success $color-success $color-success-text '\2714', error $color-error $color-error-text '\26A0', warning $color-warning $color-warning-text '\26A0'
 
-.message
-    display: flex
-    gap: 1vh
-    align-items: flex-start
-    font-weight: 400
-    font-size: 0.925rem
-    letter-spacing: 0.05rem
-    line-height: 1.25
-    font-family: $font-text
-
-.messageIcon
-    font-weight: 400
-    font-size: 0.925rem
-    letter-spacing: 0.05rem
-    line-height: 1.25
-    font-family: $font-text
-
 .alert
     border-radius: $border-radius
     padding: 0.625rem
     width: 100%
     margin: 0.2rem 0
+    display: flex
+    gap: 1vh
+    align-items: flex-start
 
     &.filled
         @each $color, $bg, $text, $symbol in $alertColor
             &.#{$color}
                 background-color: $bg
-                & > .message
+                & > .messageWrapper > .message,
+                & > .messageWrapper > .messageTitle
                     color: $text
-                    & > .messageIcon::before
-                        content: $symbol
-                        color: $text
+                & > .messageIcon::before
+                    content: $symbol
+                    color: $text
     &.outlined
         @each $color, $bg, $text, $symbol in $alertColor
             &.#{$color}
                 border: 2px solid rgba($bg, .75)
-                & > .message
+                & > .messageWrapper > .message,
+                & > .messageWrapper > .messageTitle
                     color: $bg
-                    & > .messageIcon::before
-                        content: $symbol
-                        color: $bg
+                & > .messageIcon::before
+                    content: $symbol
+                    color: $bg
     &.text
         @each $color, $bg, $text, $symbol in $alertColor
             &.#{$color}
-                & > .message
+                & > .messageWrapper > .message,
+                & > .messageWrapper > .messageTitle
                     color: rgba($bg, .75)
-                    & > .messageIcon::before
-                        content: $symbol
-                        color: $bg
+                & > .messageIcon::before
+                    content: $symbol
+                    color: $bg
+
+.messageIcon
+    font-weight: 400
+    font-size: 1.1rem
+    font-family: $font-text
+
+.message
+    font-weight: 400
+    font-size: 0.925rem
+    letter-spacing: 0.04rem
+    font-family: $font-text
+
+.messageTitle
+    font-weight: 600
+    font-size: 1rem
+    letter-spacing: 0.01rem
+    font-family: $font-text

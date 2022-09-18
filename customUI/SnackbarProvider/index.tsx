@@ -6,7 +6,7 @@ import { Portal } from '../Portal';
 
 import styles from './SnackbarProvider.module.sass'
 
-interface Item { message: string; id?: string; severity: AlertColor }
+interface Item { message: string; title?: string; id?: string; severity: AlertColor }
 
 interface SnackbarProviderProps {
     children: React.ReactNode;
@@ -33,7 +33,7 @@ export function SnackbarProvider(props: SnackbarProviderProps) {
 
     const {
         anchor = { y: 'top', x: 'right' },
-        autoHideDuration = 3000,
+        autoHideDuration = 5000,
         visibleAlerts = 3,
         children,
     } = props
@@ -45,6 +45,7 @@ export function SnackbarProvider(props: SnackbarProviderProps) {
 
         setItems([...items, {
             message: params.message,
+            title: params.title,
             severity: params.severity,
             id: randomId
         }])
@@ -65,9 +66,13 @@ export function SnackbarProvider(props: SnackbarProviderProps) {
                             className={ClassName(styles.snackbarList, styles[anchor.y], styles[anchor.x])}>
                             {
                                 items.slice(-visibleAlerts).map((data) => (
-                                    <Alert key={data.id} severity={data.severity} variant="filled">
-                                        {data.message}
-                                    </Alert>
+                                    <Alert
+                                        key={data.id}
+                                        severity={data.severity}
+                                        message={data.message}
+                                        variant="filled"
+                                        title={data.title}
+                                    />
                                 ))
                             }
                         </div>

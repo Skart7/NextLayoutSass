@@ -5,16 +5,17 @@ import { AlertColor, AlertVariant } from '../.system/interfaces'
 import styles from './Alert.module.sass'
 
 interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
-    children: React.ReactNode;
+    message: string;
     className?: string;
     severity?: AlertColor;
     variant?: AlertVariant;
+    title?: string;
 }
 
 export const Alert = React.forwardRef((props: AlertProps, ref: React.ForwardedRef<HTMLDivElement>) => {
 
     const {
-        children, className = '', severity = "success", variant = "filled", ...otherProps
+        message, className = '', severity = "success", variant = "filled", title, ...otherProps
     } = props
 
     return (
@@ -23,10 +24,11 @@ export const Alert = React.forwardRef((props: AlertProps, ref: React.ForwardedRe
             className={ClassName(styles.alert, styles[variant], styles[severity], className)}
             {...otherProps}
         >
-            <p className={styles.message}>
-                <span className={styles.messageIcon} />
-                {children}
-            </p>
+            <span className={styles.messageIcon} />
+            <div className={styles.messageWrapper}>
+                {title && <p className={styles.messageTitle}>{title}</p>}
+                <p className={styles.message}>{message}</p>
+            </div>
         </div>
     )
 })
